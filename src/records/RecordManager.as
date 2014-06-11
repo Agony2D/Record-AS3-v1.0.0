@@ -17,7 +17,7 @@ package records {
 	
 	[Event(name = "complete",  type = "flash.events.Event")] 
 	
-	[Event(name = "progress",  type = "flash.events.RecordMessage")] 
+	[Event(name = "progress",  type = "flash.events.ProgressEvent")] 
 	
 	[Event(name = "recording", type = "org.bytearray.micrecorder.events.RecordingEvent")] 
 	
@@ -187,7 +187,7 @@ public class RecordManager extends EventDispatcher {
 		if (msg == "progress") {
 			value = m_channelToMain.receive();
 //			trace("[mp3 ratio]: " + value);
-			this.dispatchEvent(new ProgressEvent(ProgressEvent.PROGRESS, value));
+			this.dispatchEvent(new ProgressEvent(ProgressEvent.PROGRESS, false, false, value, 1));
 		}
 		else if(msg == "complete") {
 //			trace("[mp3 complete]");
