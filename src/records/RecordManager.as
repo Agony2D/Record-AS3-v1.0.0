@@ -15,11 +15,11 @@ package records {
 	import org.bytearray.micrecorder.encoder.WaveEncoder;
 	import org.bytearray.micrecorder.events.RecordingEvent;
 	
+	[Event(name = "recording", type = "org.bytearray.micrecorder.events.RecordingEvent")] 
+	
 	[Event(name = "complete",  type = "flash.events.Event")] 
 	
 	[Event(name = "progress",  type = "flash.events.ProgressEvent")] 
-	
-	[Event(name = "recording", type = "org.bytearray.micrecorder.events.RecordingEvent")] 
 	
 public class RecordManager extends EventDispatcher {
 	
@@ -80,6 +80,10 @@ public class RecordManager extends EventDispatcher {
 	 * 錄音開始.
 	 */
 	public function start() : void {
+		if(!m_enabled){
+			trace("錄音尚未開啟.");
+			return;
+		}
 		m_isRecording = true;
 		if(m_micRecorder){
 			this.____doClearRecord();
@@ -108,7 +112,7 @@ public class RecordManager extends EventDispatcher {
 			m_wavSound.play();
 		}
 		else{
-			m_channelToMain.send("No play record !!")
+			trace("No play record !!")
 		}
 	}
 	
@@ -120,7 +124,7 @@ public class RecordManager extends EventDispatcher {
 			m_wavSound.stop();
 		}
 		else{
-			m_channelToMain.send("No stop record !!")
+			trace("No stop record !!")
 		}
 	}
 	
@@ -166,7 +170,7 @@ public class RecordManager extends EventDispatcher {
 	private function ____onRecordComplete(e:Event):void {
 		m_isRecording = false;
 		m_wavSound = new WavSound(m_micRecorder.output, new AudioSetting);
-		if (m_wavSound.length > MIN_LENGTH) {
+		if (m_enabled && m_wavSound.length > MIN_LENGTH) {
 			m_channelToWorker.send("encode");
 			m_micRecorder.output.shareable = true;
 			m_channelToWorker.send(m_micRecorder.output);
