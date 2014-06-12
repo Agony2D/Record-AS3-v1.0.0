@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="false" useMultiPlatformConfig="false" version="3">
   <includeClasses>
+    <classEntry path="org.as3wavsound.WavSound"/>
+    <classEntry path="org.as3wavsound.WavSoundChannel"/>
+    <classEntry path="org.as3wavsound.WavSoundPlayer"/>
+    <classEntry path="org.as3wavsound.sazameki.core.AudioSamples"/>
+    <classEntry path="org.as3wavsound.sazameki.core.AudioSetting"/>
+    <classEntry path="org.as3wavsound.sazameki.format.riff.Chunk"/>
+    <classEntry path="org.as3wavsound.sazameki.format.riff.LIST"/>
+    <classEntry path="org.as3wavsound.sazameki.format.riff.RIFF"/>
+    <classEntry path="org.as3wavsound.sazameki.format.wav.Wav"/>
+    <classEntry path="org.as3wavsound.sazameki.format.wav.chunk.WavdataChunk"/>
+    <classEntry path="org.as3wavsound.sazameki.format.wav.chunk.WavfmtChunk"/>
+    <classEntry path="org.bytearray.micrecorder.IEncoder"/>
+    <classEntry path="org.bytearray.micrecorder.MicRecorder"/>
+    <classEntry path="org.bytearray.micrecorder.encoder.WaveEncoder"/>
+    <classEntry path="org.bytearray.micrecorder.events.RecordingEvent"/>
     <classEntry path="records.RecordManager"/>
   </includeClasses>
   <includeResources/>
